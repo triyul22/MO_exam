@@ -9,21 +9,23 @@ namespace MO_Lab2
 {
     class Program
     {
-        private const int count = 3;
-
         static void Main(string[] args)
         {
-            double EPS = 0.00000001;
-            Interval interval = new Interval();
+            var matrix = new Matrix(3, new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+            Console.WriteLine("Initial Matrix");
+            matrix.showMatrix();
+            Console.WriteLine("----------------------");
 
-            Console.WriteLine("Алгоритм Брента:");
-            for (int i = 1; i <= count; i++)
-            {
-                interval = Functions.GetInterval(i);
-                Console.WriteLine(BrentMethod.BrentCalc(interval.A, interval.B, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, EPS, i, true));
-            }
+            matrix.LU();
+            Console.WriteLine("L Matrix");
+            matrix.showL();
+            Console.WriteLine("----------------------");
+
+            Console.WriteLine("U Matrix");
+            matrix.showU();
+            Console.WriteLine("----------------------");
+
             Console.ReadKey();
-
         }
     }
 }
